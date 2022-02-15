@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { AppBar, Toolbar, Typography } from '@material-ui/core';
+import ClienteLista from './pages/ClienteLista';
+
+
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  NavLink,
+} from "react-router-dom";
+import ClienteCad from './pages/ClienteCad';
+
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <AppBar position='static'>
+        <Toolbar>
+          <Typography>Crud Teste</Typography>
+          <NavLink style={{color: '#fff', marginLeft: 20, padding: 5,}} to='/' exact>Lista</NavLink>
+          <NavLink style={{color: '#fff', marginLeft: 20, padding: 5,}} to='/cad' exact>Cadastro</NavLink>
+        </Toolbar>
+      </AppBar>
+
+      <Switch>
+        <Route path="/cad" component={ClienteCad} />      
+        <Route exact path="/" component={ClienteLista} />      
+      </Switch>
+    </Router>
   );
 }
 
 export default App;
+
