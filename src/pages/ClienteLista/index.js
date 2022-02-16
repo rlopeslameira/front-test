@@ -30,9 +30,7 @@ function ClienteLista() {
 
   async function remove(e, item){
     e.preventDefault();
-    console.log(item);
     let response = await api.delete('clients', {data: item});
-    console.log(response.data);
     loadList();
   }
 
